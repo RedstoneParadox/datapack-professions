@@ -1,25 +1,25 @@
 {
 	"schema_version": 1,
 	"quilt_loader": {
-		"group": "com.example",
-		"id": "example_mod",
+		"group": "io.github.redstoneparadox",
+		"id": "datapack_professions",
 		"version": "${version}",
 		"metadata": {
-			"name": "Mod Name",
-			"description": "A short description of your mod.",
+			"name": "Datapack Professions",
+			"description": "Allows for editing existing trades and creating new professions/wandering traders",
 			"contributors": {
-				"Your name here": "Owner"
+				"Your name here": "Redstone Paradox"
 			},
 			"contact": {
-				"homepage": "https://example.com/",
-				"issues": "https://github.com/QuiltMC/quilt-template-mod/issues",
-				"sources": "https://github.com/QuiltMC/quilt-template-mod"
+				"homepage": "https://github.com/RedstoneParadox/Datapack-Professions",
+				"issues": "https://github.com/RedstoneParadox/Datapack-Professions/issues",
+				"sources": "https://github.com/RedstoneParadox/Datapack-Professions"
 			},
-			"icon": "assets/example_mod/icon.png"
+			"icon": "assets/datapack_professions/icon.png"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "com.example.example_mod.ExampleMod"
+			"init": "io.github.redstoneparadox.datapackprofessions.DatapackProfessions"
 		},
 		"depends": [
 			{
@@ -36,5 +36,5 @@
 			}
 		]
 	},
-	"mixin": "example_mod.mixins.json"
+	"mixin": "datapack_professions.mixins.json"
 }
