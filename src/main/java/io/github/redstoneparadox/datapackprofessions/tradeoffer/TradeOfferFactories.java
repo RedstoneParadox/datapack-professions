@@ -21,4 +21,15 @@ public class TradeOfferFactories {
 			}
 		);
 	public static Codec<ExtendedTradeOfferFactory> CODEC = TYPE_CODEC.dispatch(ExtendedTradeOfferFactory::getType, TradeOfferFactoryType::codec);
+
+	public static TradeOfferFactoryType register(Identifier id, TradeOfferFactoryType type) {
+		if (TYPES.containsKey(id)) {
+			throw new IllegalArgumentException("Trade Offer Factory type '" + id + "' Has already been registered");
+		} else if (TYPES.containsValue(type)) {
+			throw new IllegalArgumentException("Trade Offer Factory type '" + id + "' already registered as '" + TYPES.inverse().get(type) + "'");
+		}
+
+		TYPES.put(id, type);
+		return type;
+	}
 }
