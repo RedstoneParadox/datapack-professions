@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "village.BuyForOneEmeraldFactoryMixin",
+    "village.EnchantBookFactoryMixin",
     "village.SellItemFactoryMixin"
   ],
   "client": [

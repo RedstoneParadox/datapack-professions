@@ -25,6 +25,15 @@ public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> c
 			new Identifier("buy_for_one_emerald"),
 			(Codec<? extends ExtendedTradeOfferFactory>)((Object) BUY_FOR_ONE_EMERALD_CODEC)
 		);
+		public static final Codec<TradeOffers.EnchantBookFactory> ENCHANT_BOOK_CODEC = RecordCodecBuilder.create(
+			instance -> instance.group(
+				Codec.INT.fieldOf("experience").forGetter(factory -> factory.experience)
+			).apply(instance, TradeOffers.EnchantBookFactory::new)
+		);
+		public static final TradeOfferFactoryType ENCHANT_BOOK_TYPE = TradeOfferFactories.register(
+			new Identifier("enchant_book"),
+			(Codec<? extends ExtendedTradeOfferFactory>)((Object) ENCHANT_BOOK_CODEC)
+		);
 		public static final Codec<TradeOffers.SellItemFactory> SELL_ITEM_CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
 				Registries.ITEM.getCodec().fieldOf("sell").forGetter(sellItemFactory -> sellItemFactory.sell.getItem()),
