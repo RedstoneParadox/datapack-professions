@@ -15,6 +15,6 @@ import org.spongepowered.asm.mixin.Mixin;
 public abstract class SellItemFactoryMixin implements ExtendedTradeOfferFactory {
 	@Override
 	public TradeOfferFactoryType getType() {
-		return null;
+		return TradeOfferFactoryType.VanillaTypes.SELL_ITEM_TYPE;
 	}
 }
