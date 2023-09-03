@@ -5,6 +5,7 @@ import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import net.minecraft.util.Identifier;
+import net.minecraft.village.TradeOffers;
 
 import java.util.HashMap;
 
@@ -21,6 +22,11 @@ public class TradeOfferFactories {
 			}
 		);
 	public static Codec<ExtendedTradeOfferFactory> CODEC = TYPE_CODEC.dispatch(ExtendedTradeOfferFactory::getType, TradeOfferFactoryType::codec);
+
+	public static TradeOfferFactoryType register(Identifier id, Codec<? extends ExtendedTradeOfferFactory> codec) {
+		TradeOfferFactoryType type = new TradeOfferFactoryType(codec);
+		return register(id, type);
+	}
 
 	public static TradeOfferFactoryType register(Identifier id, TradeOfferFactoryType type) {
 		if (TYPES.containsKey(id)) {
