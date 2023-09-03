@@ -1,5 +1,13 @@
 accessWidener v2 named
 
+# Buy-for-One-Emerald factory
+accessible field net/minecraft/village/TradeOffers$BuyForOneEmeraldFactory buy Lnet/minecraft/item/Item;
+accessible field net/minecraft/village/TradeOffers$BuyForOneEmeraldFactory price I
+accessible field net/minecraft/village/TradeOffers$BuyForOneEmeraldFactory maxUses I
+accessible field net/minecraft/village/TradeOffers$BuyForOneEmeraldFactory experience I
+accessible field net/minecraft/village/TradeOffers$BuyForOneEmeraldFactory multiplier F
+
+# Sell-Item Factory
 accessible field net/minecraft/village/TradeOffers$SellItemFactory sell Lnet/minecraft/item/ItemStack;
 accessible field net/minecraft/village/TradeOffers$SellItemFactory price I
 accessible field net/minecraft/village/TradeOffers$SellItemFactory count I
