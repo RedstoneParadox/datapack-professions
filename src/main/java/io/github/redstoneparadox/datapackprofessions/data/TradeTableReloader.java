@@ -13,10 +13,9 @@ import net.minecraft.util.profiler.Profiler;
 
 import java.util.Map;
 
-public final class TradeTableReloadListener extends JsonDataLoader {
-	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-	public TradeTableReloadListener() {
-		super(GSON, "datapack_professions/trade_tables");
+public final class TradeTableReloader extends JsonReloader {
+	public TradeTableReloader() {
+		super("datapack_professions/trade_tables");
 	}
 
 	@Override
