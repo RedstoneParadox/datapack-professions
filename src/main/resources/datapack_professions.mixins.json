@@ -12,7 +12,8 @@
     "village.SellItemFactoryMixin",
     "village.SellMapFactoryMixin",
     "village.SellPotionHoldingItemFactoryMixin",
-    "village.SuspiciousStewForEmeraldFactoryMixin"
+    "village.SuspiciousStewForEmeraldFactoryMixin",
+    "village.TypeAwareBuyForOneEmeraldFactoryMixin"
   ],
   "client": [
   ],

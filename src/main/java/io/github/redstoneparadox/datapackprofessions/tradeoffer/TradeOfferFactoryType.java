@@ -2,6 +2,7 @@ package io.github.redstoneparadox.datapackprofessions.tradeoffer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.SimpleMapCodec;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.map.MapIcon;
@@ -10,6 +11,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.village.TradeOffers;
+import net.minecraft.village.VillagerType;
 
 public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> codec) {
 	public static class VanillaTypes {
@@ -128,6 +130,23 @@ public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> c
 		public static final TradeOfferFactoryType SUSPICIOUS_STEW_FOR_EMERALD_FACTORY_TYPE = TradeOfferFactories.register(
 			new Identifier("suspicious_stew_for_emerald"),
 			(Codec<? extends ExtendedTradeOfferFactory>)((Object) SUSPICIOUS_STEW_FOR_EMERALD_FACTORY_CODEC)
+		);
+		private static final SimpleMapCodec<VillagerType, Item> TYPE_ITEM_SIMPLE_MAP_CODEC = Codec.simpleMap(
+			Registries.VILLAGER_TYPE.getCodec(),
+			ITEM_CODEC,
+			Registries.VILLAGER_TYPE
+		);
+		public static final Codec<TradeOffers.TypeAwareBuyForOneEmeraldFactory> TYPE_AWARE_BUY_FOR_ONE_EMERALD_FACTORY_CODEC = RecordCodecBuilder.create(
+			instance -> instance.group(
+				Codec.INT.fieldOf("count").forGetter(factory -> factory.count),
+				Codec.INT.fieldOf("max_uses").forGetter(factory -> factory.maxUses),
+				Codec.INT.fieldOf("experience").forGetter(factory -> factory.experience),
+				TYPE_ITEM_SIMPLE_MAP_CODEC.fieldOf("map").forGetter(factory -> factory.map)
+			).apply(instance, TradeOffers.TypeAwareBuyForOneEmeraldFactory::new)
+		);
+		public static final TradeOfferFactoryType TYPE_AWARE_BUY_FOR_ONE_EMERALD_FACTORY_TYPE = TradeOfferFactories.register(
+			new Identifier("type_aware_buy_for_one_emerald"),
+			(Codec<? extends ExtendedTradeOfferFactory>)((Object) TYPE_AWARE_BUY_FOR_ONE_EMERALD_FACTORY_CODEC)
 		);
 	}
 }
