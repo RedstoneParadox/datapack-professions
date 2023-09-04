@@ -1,6 +1,8 @@
 package io.github.redstoneparadox.datapackprofessions;
 
 import io.github.redstoneparadox.datapackprofessions.data.TradeTableReloader;
+import io.github.redstoneparadox.datapackprofessions.trades.TradeOfferFactories;
+import io.github.redstoneparadox.datapackprofessions.trades.TradeOfferFactoryType;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import org.quiltmc.loader.api.ModContainer;
@@ -14,6 +16,9 @@ public class DatapackProfessions implements ModInitializer {
 	public static final String NAMESPACE = "datapack_professions";
 	@Override
 	public void onInitialize(ModContainer mod) {
+		// Static initialization shenanigans
+		var foo = TradeOfferFactoryType.VanillaTypes.BUY_FOR_ONE_EMERALD_FACTORY_CODEC;
+
 		var loader = ResourceLoader.get(ResourceType.SERVER_DATA);
 
 		loader.registerReloader(new TradeTableReloader());
