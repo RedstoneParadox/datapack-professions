@@ -1,12 +1,10 @@
 package io.github.redstoneparadox.datapackprofessions.data;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.mojang.serialization.JsonOps;
 import io.github.redstoneparadox.datapackprofessions.DatapackProfessions;
+import io.github.redstoneparadox.datapackprofessions.trades.LoadedTradeOffers;
 import io.github.redstoneparadox.datapackprofessions.trades.TradeTable;
-import net.minecraft.resource.JsonDataLoader;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.profiler.Profiler;
@@ -23,18 +21,17 @@ public final class TradeTableReloader extends JsonReloader {
 		cache.forEach((id, element) -> {
 			try {
 				var result = TradeTable.CODEC.parse(JsonOps.INSTANCE, element);
-				var table = result.resultOrPartial(s -> {});
+				var optional = result.resultOrPartial(s -> {});
 
 				if (result.error().isPresent()) {
-					if (table.isPresent()) {
+					if (optional.isPresent()) {
 						DatapackProfessions.LOGGER.error("Error loading Trade Table '{}'. Trade Table will only be partially loaded. {}", id, result.error().get().message());
 					} else {
 						DatapackProfessions.LOGGER.error("Error loading Trade Table  '{}'. (Skipping). {}", id, result.error().get().message());
 					}
 				}
 
-				// Temporary
-				if (table.isPresent()) DatapackProfessions.LOGGER.info("Successfully loaded trade table '{}'", id);
+				optional.ifPresent(tradeTable -> LoadedTradeOffers.addOffers(id, tradeTable.replace(), tradeTable.offers()));
 
 			} catch (Exception e) {
 				DatapackProfessions.LOGGER.error("Could not load Trade Table '{}'. (Skipping). {}", id, e);
