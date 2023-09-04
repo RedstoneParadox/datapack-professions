@@ -9,6 +9,6 @@ import org.spongepowered.asm.mixin.Mixin;
 public abstract class BuyForOneEmeraldFactoryMixin implements ExtendedTradeOfferFactory {
 	@Override
 	public TradeOfferFactoryType getType() {
-		return TradeOfferFactoryType.VanillaTypes.BUY_FOR_ONE_EMERALD_TYPE;
+		return TradeOfferFactoryType.VanillaTypes.BUY_FOR_ONE_EMERALD_FACTORY_TYPE;
 	}
 }

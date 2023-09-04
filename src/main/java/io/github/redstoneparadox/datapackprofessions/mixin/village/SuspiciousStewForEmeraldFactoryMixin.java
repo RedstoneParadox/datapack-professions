@@ -5,10 +5,10 @@ import io.github.redstoneparadox.datapackprofessions.tradeoffer.TradeOfferFactor
 import net.minecraft.village.TradeOffers;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin(TradeOffers.SellItemFactory.class)
-public abstract class SellItemFactoryMixin implements ExtendedTradeOfferFactory {
+@Mixin(TradeOffers.SuspiciousStewForEmeraldFactory.class)
+public abstract class SuspiciousStewForEmeraldFactoryMixin implements ExtendedTradeOfferFactory {
 	@Override
 	public TradeOfferFactoryType getType() {
-		return TradeOfferFactoryType.VanillaTypes.SELL_ITEM_FACTORY_TYPE;
+		return TradeOfferFactoryType.VanillaTypes.SUSPICIOUS_STEW_FOR_EMERALD_FACTORY_TYPE;
 	}
 }

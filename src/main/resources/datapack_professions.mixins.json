@@ -6,7 +6,13 @@
   "mixins": [
     "village.BuyForOneEmeraldFactoryMixin",
     "village.EnchantBookFactoryMixin",
-    "village.SellItemFactoryMixin"
+    "village.ProcessItemFactoryMixin",
+    "village.SellDyedArmorFactoryMixin",
+    "village.SellEnchantedToolFactoryMixin",
+    "village.SellItemFactoryMixin",
+    "village.SellMapFactoryMixin",
+    "village.SellPotionHoldingItemFactoryMixin",
+    "village.SuspiciousStewForEmeraldFactoryMixin"
   ],
   "client": [
   ],

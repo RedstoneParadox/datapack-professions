@@ -9,6 +9,6 @@ import org.spongepowered.asm.mixin.Mixin;
 public abstract class EnchantBookFactoryMixin implements ExtendedTradeOfferFactory {
 	@Override
 	public TradeOfferFactoryType getType() {
-		return TradeOfferFactoryType.VanillaTypes.ENCHANT_BOOK_TYPE;
+		return TradeOfferFactoryType.VanillaTypes.ENCHANT_BOOK_FACTORY_TYPE;
 	}
 }
