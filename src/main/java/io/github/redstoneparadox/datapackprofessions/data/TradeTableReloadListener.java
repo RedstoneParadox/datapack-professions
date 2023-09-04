@@ -1,4 +1,4 @@
-package io.github.redstoneparadox.datapackprofessions.mixin.data;
+package io.github.redstoneparadox.datapackprofessions.data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,7 +15,7 @@ import java.util.Map;
 
 public final class TradeTableReloadListener extends JsonDataLoader {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-	public TradeTableReloadListener(String dataType) {
+	public TradeTableReloadListener() {
 		super(GSON, "datapack_professions/trade_tables");
 	}
 
@@ -40,7 +40,8 @@ public final class TradeTableReloadListener extends JsonDataLoader {
 			} catch (Exception e) {
 				DatapackProfessions.LOGGER.error("Could not load Trade Table '{}'. (Skipping). {}", id, e);
 			}
-			DatapackProfessions.LOGGER.info("Finished loading Trade Tables.");
 		});
+
+		DatapackProfessions.LOGGER.info("Finished loading Trade Tables.");
 	}
 }
