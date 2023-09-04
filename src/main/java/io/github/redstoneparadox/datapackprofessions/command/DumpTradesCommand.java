@@ -65,6 +65,7 @@ public class DumpTradesCommand implements Command<ServerCommandSource> {
 						if (exists) {
 							var jsonWriter = new JsonWriter(new BufferedWriter(new FileWriter(file)));
 							jsonWriter.setLenient(true);
+							jsonWriter.setIndent("  ");
 							Streams.write(json, jsonWriter);
 							jsonWriter.close();
 						}
