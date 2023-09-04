@@ -1,4 +1,4 @@
-package io.github.redstoneparadox.datapackprofessions.tradeoffer;
+package io.github.redstoneparadox.datapackprofessions.trades;
 
 import net.minecraft.village.TradeOffers;
 

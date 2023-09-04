@@ -1,13 +1,10 @@
-package io.github.redstoneparadox.datapackprofessions.tradeoffer;
+package io.github.redstoneparadox.datapackprofessions.trades;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import net.minecraft.util.Identifier;
-import net.minecraft.village.TradeOffers;
-
-import java.util.HashMap;
 
 public class TradeOfferFactories {
 	private static final BiMap<Identifier, TradeOfferFactoryType> TYPES = HashBiMap.create();
