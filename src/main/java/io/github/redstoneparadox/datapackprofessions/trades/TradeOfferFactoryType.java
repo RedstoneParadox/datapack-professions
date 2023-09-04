@@ -19,7 +19,7 @@ public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> c
 		public static final Codec<TradeOffers.BuyForOneEmeraldFactory> BUY_FOR_ONE_EMERALD_FACTORY_CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
 				ITEM_CODEC.fieldOf("buy").forGetter(factory -> factory.buy),
-				Codec.INT.fieldOf("price").forGetter(factory -> factory.price),
+				Codec.INT.optionalFieldOf("price", 1).forGetter(factory -> factory.price),
 				Codec.INT.fieldOf("max_uses").forGetter(factory -> factory.maxUses),
 				Codec.INT.fieldOf("experience").forGetter(factory -> factory.experience)
 			).apply(instance, TradeOffers.BuyForOneEmeraldFactory::new)
@@ -40,10 +40,10 @@ public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> c
 		public static final Codec<TradeOffers.ProcessItemFactory> PROCESS_ITEM_FACTORY_CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
 				ITEM_CODEC.fieldOf("second_buy").forGetter(factory -> factory.secondBuy.getItem()),
-				Codec.INT.fieldOf("second_count").forGetter(factory -> factory.secondCount),
-				Codec.INT.fieldOf("price").forGetter(factory -> factory.price),
+				Codec.INT.optionalFieldOf("second_count", 1).forGetter(factory -> factory.secondCount),
+				Codec.INT.optionalFieldOf("price", 1).forGetter(factory -> factory.price),
 				ITEM_CODEC.fieldOf("sell").forGetter(factory -> factory.sell.getItem()),
-				Codec.INT.fieldOf("sell_count").forGetter(factory -> factory.sellCount),
+				Codec.INT.optionalFieldOf("sell_count", 1).forGetter(factory -> factory.sellCount),
 				Codec.INT.fieldOf("max_uses").forGetter(factory -> factory.maxUses),
 				Codec.INT.fieldOf("experience").forGetter(factory -> factory.experience)
 			).apply(instance, TradeOffers.ProcessItemFactory::new)
@@ -55,7 +55,7 @@ public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> c
 		public static final Codec<TradeOffers.SellDyedArmorFactory> SELL_DYED_ARMOR_FACTORY_CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
 				ITEM_CODEC.fieldOf("sell").forGetter(factory -> factory.sell),
-				Codec.INT.fieldOf("price").forGetter(factory -> factory.price),
+				Codec.INT.optionalFieldOf("price", 1).forGetter(factory -> factory.price),
 				Codec.INT.fieldOf("max_uses").forGetter(factory -> factory.maxUses),
 				Codec.INT.fieldOf("experience").forGetter(factory -> factory.experience)
 			).apply(instance, TradeOffers.SellDyedArmorFactory::new)
@@ -67,10 +67,10 @@ public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> c
 		public static final Codec<TradeOffers.SellEnchantedToolFactory> SELL_ENCHANTED_TOOL_FACTORY_CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
 				ITEM_CODEC.fieldOf("tool").forGetter(factory -> factory.tool.getItem()),
-				Codec.INT.fieldOf("base_price").forGetter(factory -> factory.basePrice),
+				Codec.INT.optionalFieldOf("base_price", 1).forGetter(factory -> factory.basePrice),
 				Codec.INT.fieldOf("max_uses").forGetter(factory -> factory.maxUses),
 				Codec.INT.fieldOf("experience").forGetter(factory -> factory.experience),
-				Codec.FLOAT.fieldOf("multiplier").forGetter(factory -> factory.multiplier)
+				Codec.FLOAT.optionalFieldOf("multiplier", 0.05f).forGetter(factory -> factory.multiplier)
 			).apply(instance, TradeOffers.SellEnchantedToolFactory::new)
 		);
 		public static final TradeOfferFactoryType SELL_ENCHANTED_TOOL_FACTORY_TYPE = TradeOfferFactories.register(
@@ -80,11 +80,11 @@ public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> c
 		public static final Codec<TradeOffers.SellItemFactory> SELL_ITEM_FACTORY_CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
 				ITEM_CODEC.xmap(ItemStack::new, ItemStack::getItem).fieldOf("sell").forGetter(sellItemFactory -> sellItemFactory.sell),
-				Codec.INT.fieldOf("price").forGetter(factory -> factory.price),
-				Codec.INT.fieldOf("count").forGetter(factory -> factory.count),
+				Codec.INT.optionalFieldOf("price", 1).forGetter(factory -> factory.price),
+				Codec.INT.optionalFieldOf("count", 1).forGetter(factory -> factory.count),
 				Codec.INT.fieldOf("max_uses").forGetter(factory -> factory.maxUses),
 				Codec.INT.fieldOf("experience").forGetter(factory -> factory.experience),
-				Codec.FLOAT.fieldOf("multiplier").forGetter(factory -> factory.multiplier)
+				Codec.FLOAT.optionalFieldOf("multiplier", 0.05f).forGetter(factory -> factory.multiplier)
 			).apply(instance, TradeOffers.SellItemFactory::new)
 		);
 		public static final TradeOfferFactoryType SELL_ITEM_FACTORY_TYPE = TradeOfferFactories.register(
@@ -93,7 +93,7 @@ public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> c
 		);
 		public static final Codec<TradeOffers.SellMapFactory> SELL_MAP_FACTORY_CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
-				Codec.INT.fieldOf("price").forGetter(factory -> factory.price),
+				Codec.INT.optionalFieldOf("price", 1).forGetter(factory -> factory.price),
 				TagKey.createCodec(RegistryKeys.STRUCTURE_FEATURE).fieldOf("structures").forGetter(factory -> factory.structures),
 				Codec.STRING.fieldOf("map_name").forGetter(factory -> factory.mapName),
 				Codec.BYTE.xmap(MapIcon.Type::byId, MapIcon.Type::getId).fieldOf("icon_type").forGetter(factory -> factory.iconType),
@@ -108,10 +108,10 @@ public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> c
 		public static final Codec<TradeOffers.SellPotionHoldingItemFactory> SELL_POTION_HOLDING_ITEM_FACTORY_CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
 				ITEM_CODEC.fieldOf("second_buy").forGetter(factory -> factory.secondBuy),
-				Codec.INT.fieldOf("second_count").forGetter(factory -> factory.secondCount),
+				Codec.INT.optionalFieldOf("second_count", 1).forGetter(factory -> factory.secondCount),
 				ITEM_CODEC.fieldOf("sell").forGetter(factory -> factory.sell.getItem()),
-				Codec.INT.fieldOf("sell_count").forGetter(factory -> factory.sellCount),
-				Codec.INT.fieldOf("price").forGetter(factory -> factory.price),
+				Codec.INT.optionalFieldOf("sell_count", 1).forGetter(factory -> factory.sellCount),
+				Codec.INT.optionalFieldOf("price", 1).forGetter(factory -> factory.price),
 				Codec.INT.fieldOf("max_uses").forGetter(factory -> factory.maxUses),
 				Codec.INT.fieldOf("experience").forGetter(factory -> factory.experience)
 			).apply(instance, TradeOffers.SellPotionHoldingItemFactory::new)
@@ -138,7 +138,7 @@ public record TradeOfferFactoryType(Codec<? extends ExtendedTradeOfferFactory> c
 		);
 		public static final Codec<TradeOffers.TypeAwareBuyForOneEmeraldFactory> TYPE_AWARE_BUY_FOR_ONE_EMERALD_FACTORY_CODEC = RecordCodecBuilder.create(
 			instance -> instance.group(
-				Codec.INT.fieldOf("count").forGetter(factory -> factory.count),
+				Codec.INT.optionalFieldOf("count", 1).forGetter(factory -> factory.count),
 				Codec.INT.fieldOf("max_uses").forGetter(factory -> factory.maxUses),
 				Codec.INT.fieldOf("experience").forGetter(factory -> factory.experience),
 				TYPE_ITEM_SIMPLE_MAP_CODEC.fieldOf("map").forGetter(factory -> factory.map)
