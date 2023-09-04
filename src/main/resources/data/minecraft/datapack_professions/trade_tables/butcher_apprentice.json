@@ -1,0 +1,25 @@
+{
+  "offers": [
+    {
+      "buy": "minecraft:coal",
+      "price": 15,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "max_uses": 16,
+      "experience": 5,
+      "sell": "minecraft:cooked_porkchop",
+      "count": 5,
+      "type": "minecraft:sell_item"
+    },
+    {
+      "max_uses": 16,
+      "experience": 5,
+      "sell": "minecraft:cooked_chicken",
+      "count": 8,
+      "type": "minecraft:sell_item"
+    }
+  ]
+}

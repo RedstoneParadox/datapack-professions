@@ -1,0 +1,20 @@
+{
+  "offers": [
+    {
+      "max_uses": 12,
+      "experience": 30,
+      "sell": "minecraft:golden_carrot",
+      "price": 3,
+      "count": 3,
+      "type": "minecraft:sell_item"
+    },
+    {
+      "max_uses": 12,
+      "experience": 30,
+      "sell": "minecraft:glistering_melon_slice",
+      "price": 4,
+      "count": 3,
+      "type": "minecraft:sell_item"
+    }
+  ]
+}

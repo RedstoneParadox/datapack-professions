@@ -1,0 +1,27 @@
+{
+  "offers": [
+    {
+      "buy": "minecraft:cod",
+      "price": 15,
+      "max_uses": 16,
+      "experience": 10,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "sell": "minecraft:cooked_salmon",
+      "sell_count": 6,
+      "max_uses": 16,
+      "experience": 5,
+      "second_buy": "minecraft:salmon",
+      "second_count": 6,
+      "type": "minecraft:process_item"
+    },
+    {
+      "max_uses": 12,
+      "experience": 5,
+      "sell": "minecraft:campfire",
+      "price": 2,
+      "type": "minecraft:sell_item"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "offers": [
+    {
+      "buy": "minecraft:pufferfish",
+      "price": 4,
+      "max_uses": 12,
+      "experience": 30,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "max_uses": 12,
+      "experience": 30,
+      "map": {
+        "minecraft:plains": "minecraft:oak_boat",
+        "minecraft:taiga": "minecraft:spruce_boat",
+        "minecraft:snow": "minecraft:spruce_boat",
+        "minecraft:desert": "minecraft:jungle_boat",
+        "minecraft:jungle": "minecraft:jungle_boat",
+        "minecraft:savanna": "minecraft:acacia_boat",
+        "minecraft:swamp": "minecraft:dark_oak_boat"
+      },
+      "type": "minecraft:type_aware_buy_for_one_emerald"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "offers": [
+    {
+      "buy": "minecraft:paper",
+      "price": 24,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "experience": 1,
+      "type": "minecraft:enchant_book"
+    },
+    {
+      "max_uses": 12,
+      "experience": 1,
+      "sell": "minecraft:bookshelf",
+      "price": 9,
+      "type": "minecraft:sell_item"
+    }
+  ]
+}

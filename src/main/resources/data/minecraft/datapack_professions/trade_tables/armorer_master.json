@@ -1,0 +1,20 @@
+{
+  "offers": [
+    {
+      "max_uses": 3,
+      "experience": 15,
+      "multiplier": 0.2,
+      "tool": "minecraft:diamond_leggings",
+      "base_price": 14,
+      "type": "minecraft:sell_enchanted_tool"
+    },
+    {
+      "max_uses": 3,
+      "experience": 15,
+      "multiplier": 0.2,
+      "tool": "minecraft:diamond_boots",
+      "base_price": 8,
+      "type": "minecraft:sell_enchanted_tool"
+    }
+  ]
+}

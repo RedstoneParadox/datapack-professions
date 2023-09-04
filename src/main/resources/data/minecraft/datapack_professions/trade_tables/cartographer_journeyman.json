@@ -1,0 +1,19 @@
+{
+  "offers": [
+    {
+      "buy": "minecraft:compass",
+      "max_uses": 12,
+      "experience": 20,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "icon_type": 8,
+      "max_uses": 12,
+      "experience": 10,
+      "price": 14,
+      "structures": "minecraft:on_woodland_explorer_maps",
+      "map_name": "filled_map.mansion",
+      "type": "minecraft:sell_map"
+    }
+  ]
+}

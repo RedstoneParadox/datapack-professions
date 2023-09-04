@@ -1,0 +1,39 @@
+{
+  "offers": [
+    {
+      "buy": "minecraft:wheat",
+      "price": 20,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "buy": "minecraft:potato",
+      "price": 26,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "buy": "minecraft:carrot",
+      "price": 22,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "buy": "minecraft:beetroot",
+      "price": 15,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "max_uses": 16,
+      "experience": 1,
+      "sell": "minecraft:bread",
+      "count": 6,
+      "type": "minecraft:sell_item"
+    }
+  ]
+}

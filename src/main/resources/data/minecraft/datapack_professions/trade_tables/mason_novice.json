@@ -1,0 +1,18 @@
+{
+  "offers": [
+    {
+      "buy": "minecraft:clay_ball",
+      "price": 10,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "max_uses": 16,
+      "experience": 1,
+      "sell": "minecraft:brick",
+      "count": 10,
+      "type": "minecraft:sell_item"
+    }
+  ]
+}

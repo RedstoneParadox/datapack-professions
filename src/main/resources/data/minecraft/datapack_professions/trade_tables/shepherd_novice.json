@@ -1,0 +1,39 @@
+{
+  "offers": [
+    {
+      "buy": "minecraft:white_wool",
+      "price": 18,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "buy": "minecraft:brown_wool",
+      "price": 18,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "buy": "minecraft:black_wool",
+      "price": 18,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "buy": "minecraft:gray_wool",
+      "price": 18,
+      "max_uses": 16,
+      "experience": 2,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "max_uses": 12,
+      "experience": 1,
+      "sell": "minecraft:shears",
+      "price": 2,
+      "type": "minecraft:sell_item"
+    }
+  ]
+}

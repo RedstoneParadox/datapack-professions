@@ -1,0 +1,39 @@
+{
+  "offers": [
+    {
+      "buy": "minecraft:lava_bucket",
+      "max_uses": 12,
+      "experience": 20,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "buy": "minecraft:diamond",
+      "max_uses": 12,
+      "experience": 20,
+      "type": "minecraft:buy_for_one_emerald"
+    },
+    {
+      "max_uses": 12,
+      "experience": 10,
+      "multiplier": 0.2,
+      "sell": "minecraft:chainmail_helmet",
+      "type": "minecraft:sell_item"
+    },
+    {
+      "max_uses": 12,
+      "experience": 10,
+      "multiplier": 0.2,
+      "sell": "minecraft:chainmail_chestplate",
+      "price": 4,
+      "type": "minecraft:sell_item"
+    },
+    {
+      "max_uses": 12,
+      "experience": 10,
+      "multiplier": 0.2,
+      "sell": "minecraft:shield",
+      "price": 5,
+      "type": "minecraft:sell_item"
+    }
+  ]
+}

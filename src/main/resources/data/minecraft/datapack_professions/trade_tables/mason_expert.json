@@ -1,0 +1,16 @@
+{
+  "offers": [
+    {
+      "max_uses": 12,
+      "experience": 30,
+      "sell": "minecraft:quartz_pillar",
+      "type": "minecraft:sell_item"
+    },
+    {
+      "max_uses": 12,
+      "experience": 30,
+      "sell": "minecraft:quartz_block",
+      "type": "minecraft:sell_item"
+    }
+  ]
+}
