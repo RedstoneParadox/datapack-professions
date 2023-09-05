@@ -1,0 +1,4 @@
+{
+  "commands.trades.dump.failed.exception": "Exception occurred while trying to dump trade table %s. %s",
+  "commands.trades.dump.success": "Successfully dumped trade table %s."
+}

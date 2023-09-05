@@ -12,6 +12,7 @@ import io.github.redstoneparadox.datapackprofessions.trades.ExtendedTradeOfferFa
 import io.github.redstoneparadox.datapackprofessions.trades.TradeTable;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.Text;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
 import org.quiltmc.loader.api.QuiltLoader;
@@ -27,6 +28,7 @@ import java.util.Map;
 public class DumpTradesCommand implements Command<ServerCommandSource> {
 	@Override
 	public int run(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+		var source = context.getSource();
 		var argument = context.getArgument("table", TradeTableArgument.class);
 		var table = argument.table();
 		var identifier = argument.identifier();
@@ -56,9 +58,12 @@ public class DumpTradesCommand implements Command<ServerCommandSource> {
 				}
 
 			} catch (IOException e) {
+				source.sendFeedback(() -> Text.translatable("commands.trades.dump.fail.exception", identifier, e.getClass().getName()), true);
 				e.printStackTrace();
 			}
 		});
+
+		source.sendFeedback(() -> Text.translatable("commands.trades.dump.success", identifier), true);
 
 		return 0;
 	}
