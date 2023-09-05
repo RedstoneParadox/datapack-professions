@@ -62,6 +62,11 @@ public class LoadedTradeOffers {
 		String name = profession.name();
 		String prefix = name.substring(name.indexOf(':') + 1);
 
+		// Why Mojang coded these two to try and retrieve trades is beyond me, since they're not supposed to have any
+		if (prefix.equals("none") || prefix.equals("nitwit")) {
+			return new Int2ObjectOpenHashMap<>();
+		}
+
 		return copyToFastUtilMap(
 			ImmutableMap.of(
 				1, OFFERS.get(new Identifier(prefix + "_novice")).toArray(new TradeOffers.Factory[]{}),
