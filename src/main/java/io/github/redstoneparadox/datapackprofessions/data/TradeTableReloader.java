@@ -18,6 +18,8 @@ public final class TradeTableReloader extends JsonReloader {
 
 	@Override
 	protected void apply(Map<Identifier, JsonElement> cache, ResourceManager manager, Profiler profiler) {
+		LoadedTradeOffers.addVanillaOffers();
+
 		cache.forEach((id, element) -> {
 			try {
 				var result = TradeTable.CODEC.parse(JsonOps.INSTANCE, element);
