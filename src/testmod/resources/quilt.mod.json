@@ -1,0 +1,39 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "io.github.redstoneparadox",
+		"id": "datapack_professions_test",
+		"version": "${version}",
+		"metadata": {
+			"name": "Datapack Professions Test",
+			"description": "Test mod for datapack professions",
+			"contributors": {
+				"Your name here": "Redstone Paradox"
+			},
+			"contact": {
+				"homepage": "https://github.com/RedstoneParadox/Datapack-Professions",
+				"issues": "https://github.com/RedstoneParadox/Datapack-Professions/issues",
+				"sources": "https://github.com/RedstoneParadox/Datapack-Professions"
+			},
+			"icon": "assets/datapack_professions/icon.png"
+		},
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"entrypoints": {
+			"init": "io.github.redstoneparadox.datapackprofessions.test.DatapackProfessionsTest"
+		},
+		"depends": [
+			{
+				"id": "quilt_loader",
+				"versions": ">=0.19.1"
+			},
+			{
+				"id": "quilted_fabric_api",
+				"versions": ">=7.0.2"
+			},
+			{
+				"id": "minecraft",
+				"versions": ">=1.20"
+			}
+		]
+	}
+}
