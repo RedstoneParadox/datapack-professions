@@ -3,6 +3,7 @@ package io.github.redstoneparadox.datapackprofessions.trades;
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
@@ -18,8 +19,9 @@ public class LoadedTradeOffers {
 
 	public static void addVanillaOffers() {
 		for (Map.Entry<VillagerProfession, Int2ObjectMap<TradeOffers.Factory[]>> entry : TradeOffers.PROFESSION_TO_LEVELED_TRADE.entrySet()) {
-			String name = entry.getKey().name();
-			String prefix = name.substring(name.indexOf(':') + 1);
+			Identifier professionID = Registries.VILLAGER_PROFESSION.getId(entry.getKey());
+			String namespace = professionID.getNamespace();
+			String basePath = professionID.getPath();
 			Int2ObjectMap<TradeOffers.Factory[]> factoryMap = entry.getValue();
 
 			for (int i = 1; i <= 5; i++) {
@@ -37,9 +39,9 @@ public class LoadedTradeOffers {
 					case 5 -> "expert";
 					default -> "novice";
 				};
-				Identifier identifier = new Identifier(prefix + "_" + suffix);
+				Identifier tableID = new Identifier(namespace, basePath + "_" + suffix);
 
-				OFFERS.put(identifier, offers);
+				OFFERS.put(tableID, offers);
 			}
 		}
 	}
@@ -64,21 +66,22 @@ public class LoadedTradeOffers {
 	}
 
 	public static Int2ObjectMap<TradeOffers.Factory[]> getOffersForProfession(VillagerProfession profession) {
-		String name = profession.name();
-		String prefix = name.substring(name.indexOf(':') + 1);
+		Identifier professionID = Registries.VILLAGER_PROFESSION.getId(profession);
+		String namespace = professionID.getNamespace();
+		String basePath = professionID.getPath();
 
 		// Why Mojang coded these two to try and retrieve trades is beyond me, since they're not supposed to have any
-		if (prefix.equals("none") || prefix.equals("nitwit")) {
+		if (basePath.equals("none") || basePath.equals("nitwit")) {
 			return new Int2ObjectOpenHashMap<>();
 		}
 
 		return copyToFastUtilMap(
 			ImmutableMap.of(
-				1, OFFERS.get(new Identifier(prefix + "_novice")).toArray(new TradeOffers.Factory[]{}),
-				2, OFFERS.get(new Identifier(prefix + "_apprentice")).toArray(new TradeOffers.Factory[]{}),
-				3, OFFERS.get(new Identifier(prefix + "_journeyman")).toArray(new TradeOffers.Factory[]{}),
-				4, OFFERS.get(new Identifier(prefix + "_master")).toArray(new TradeOffers.Factory[]{}),
-				5, OFFERS.get(new Identifier(prefix + "_expert")).toArray(new TradeOffers.Factory[]{})
+				1, OFFERS.get(new Identifier(namespace, basePath + "_novice")).toArray(new TradeOffers.Factory[]{}),
+				2, OFFERS.get(new Identifier(namespace, basePath + "_apprentice")).toArray(new TradeOffers.Factory[]{}),
+				3, OFFERS.get(new Identifier(namespace, basePath + "_journeyman")).toArray(new TradeOffers.Factory[]{}),
+				4, OFFERS.get(new Identifier(namespace, basePath + "_master")).toArray(new TradeOffers.Factory[]{}),
+				5, OFFERS.get(new Identifier(namespace, basePath + "_expert")).toArray(new TradeOffers.Factory[]{})
 			)
 		);
 	}

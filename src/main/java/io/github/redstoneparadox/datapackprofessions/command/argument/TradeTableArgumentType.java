@@ -32,7 +32,7 @@ public class TradeTableArgumentType implements ArgumentType<TradeTableArgument> 
 
 	@Override
 	public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-		Collection<Identifier> identifiers = LoadedTradeOffers.getIdentifiers();
+		List<Identifier> identifiers = LoadedTradeOffers.getIdentifiers().stream().sorted().toList();
 
 		for (Identifier identifier : identifiers) {
 			builder.suggest(identifier.toString());

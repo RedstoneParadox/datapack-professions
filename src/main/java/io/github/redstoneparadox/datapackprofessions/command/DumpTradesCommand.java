@@ -31,7 +31,8 @@ public class DumpTradesCommand implements Command<ServerCommandSource> {
 		var table = argument.table();
 		var identifier = argument.identifier();
 		var result = TradeTable.CODEC.encodeStart(JsonOps.INSTANCE, table).result();
-		File directory = new File(QuiltLoader.getGameDir().toFile(), "dumped-trades");
+		File rootDirectory = new File(QuiltLoader.getGameDir().toFile(), "dumped-trades");
+		File directory = new File(rootDirectory, identifier.getNamespace());
 		File file = new File(directory, identifier.getPath() + ".json");
 
 		result.ifPresent(json -> {
