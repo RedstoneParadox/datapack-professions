@@ -39,11 +39,15 @@ public class DatapackProfessions implements ModInitializer {
 
 		CommandRegistrationCallback.EVENT.register(((dispatcher, buildContext, environment) -> {
 			dispatcher.register(
-				CommandManager.literal("trades").then(
-					CommandManager.literal("dump").then(
-						CommandManager.argument("table", new TradeTableArgumentType())
-					).executes(new DumpTradesCommand())
-				)
+				CommandManager
+					.literal("trades").then(
+					CommandManager
+						.literal("dump").then(
+						CommandManager
+							.argument("table", new TradeTableArgumentType())
+							.executes(new DumpTradesCommand())
+						)
+					)
 			);
 		}));
 	}
