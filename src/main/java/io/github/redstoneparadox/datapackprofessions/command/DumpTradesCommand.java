@@ -6,6 +6,8 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.JsonOps;
+import io.github.redstoneparadox.datapackprofessions.command.argument.TradeTableArgument;
+import io.github.redstoneparadox.datapackprofessions.command.argument.TradeTableArgumentType;
 import io.github.redstoneparadox.datapackprofessions.trades.ExtendedTradeOfferFactory;
 import io.github.redstoneparadox.datapackprofessions.trades.TradeTable;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -25,57 +27,37 @@ import java.util.Map;
 public class DumpTradesCommand implements Command<ServerCommandSource> {
 	@Override
 	public int run(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
-		for (Map.Entry<VillagerProfession, Int2ObjectMap<TradeOffers.Factory[]>> entry : TradeOffers.PROFESSION_TO_LEVELED_TRADE.entrySet()) {
-			String name = entry.getKey().name();
-			String prefix = name.substring(name.indexOf(':') + 1);
-			Int2ObjectMap<TradeOffers.Factory[]> factoryMap = entry.getValue();
+		var argument = context.getArgument("table", TradeTableArgument.class);
+		var table = argument.table();
+		var identifier = argument.identifier();
+		var result = TradeTable.CODEC.encodeStart(JsonOps.INSTANCE, table).result();
+		File directory = new File(QuiltLoader.getGameDir().toFile(), "dumped-trades");
+		File file = new File(directory, identifier.getPath() + ".json");
 
-			for (int i = 1; i <= 5; i++) {
-				TradeOffers.Factory[] factories = factoryMap.get(i);
-				List<ExtendedTradeOfferFactory> offers = new ArrayList<>();
+		result.ifPresent(json -> {
+			try {
+				var exists = true;
 
-				for (TradeOffers.Factory factory : factories) {
-					offers.add((ExtendedTradeOfferFactory) factory);
+				if (!directory.exists()) {
+					directory.mkdir();
 				}
 
-				TradeTable table = new TradeTable(false, offers);
-				String levelName = switch (i) {
-					case 2 -> "apprentice";
-					case 3 -> "journeyman";
-					case 4 -> "master";
-					case 5 -> "expert";
-					default -> "novice";
-				};
-				var result = TradeTable.CODEC.encodeStart(JsonOps.INSTANCE, table).result();
-				File directory = new File(QuiltLoader.getGameDir().toFile(), "dumped-trades");
-				File file = new File(directory, prefix + "_" + levelName + ".json");
+				if (!file.exists()) {
+					exists = file.createNewFile();
+				}
 
-				result.ifPresent(json -> {
-					try {
-						var exists = true;
+				if (exists) {
+					var jsonWriter = new JsonWriter(new BufferedWriter(new FileWriter(file)));
+					jsonWriter.setLenient(true);
+					jsonWriter.setIndent("  ");
+					Streams.write(json, jsonWriter);
+					jsonWriter.close();
+				}
 
-						if (!directory.exists()) {
-							directory.mkdir();
-						}
-
-						if (!file.exists()) {
-							exists = file.createNewFile();
-						}
-
-						if (exists) {
-							var jsonWriter = new JsonWriter(new BufferedWriter(new FileWriter(file)));
-							jsonWriter.setLenient(true);
-							jsonWriter.setIndent("  ");
-							Streams.write(json, jsonWriter);
-							jsonWriter.close();
-						}
-
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				});
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		}
+		});
 
 		return 0;
 	}

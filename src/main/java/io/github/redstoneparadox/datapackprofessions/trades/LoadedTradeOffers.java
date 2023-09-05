@@ -8,6 +8,7 @@ import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +59,10 @@ public class LoadedTradeOffers {
 		}
 	}
 
+	public static List<ExtendedTradeOfferFactory> getOffers(Identifier identifier) {
+		return OFFERS.get(identifier);
+	}
+
 	public static Int2ObjectMap<TradeOffers.Factory[]> getOffersForProfession(VillagerProfession profession) {
 		String name = profession.name();
 		String prefix = name.substring(name.indexOf(':') + 1);
@@ -76,6 +81,10 @@ public class LoadedTradeOffers {
 				5, OFFERS.get(new Identifier(prefix + "_expert")).toArray(new TradeOffers.Factory[]{})
 			)
 		);
+	}
+
+	public static Collection<Identifier> getIdentifiers() {
+		return OFFERS.keySet();
 	}
 
 	private static Int2ObjectMap<TradeOffers.Factory[]> copyToFastUtilMap(ImmutableMap<Integer, TradeOffers.Factory[]> map) {
