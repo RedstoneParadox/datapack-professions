@@ -7,23 +7,15 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.JsonOps;
 import io.github.redstoneparadox.datapackprofessions.command.argument.TradeTableArgument;
-import io.github.redstoneparadox.datapackprofessions.command.argument.TradeTableArgumentType;
-import io.github.redstoneparadox.datapackprofessions.trades.ExtendedTradeOfferFactory;
 import io.github.redstoneparadox.datapackprofessions.trades.TradeTable;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
-import net.minecraft.village.TradeOffers;
-import net.minecraft.village.VillagerProfession;
 import org.quiltmc.loader.api.QuiltLoader;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class DumpTradesCommand implements Command<ServerCommandSource> {
 	@Override

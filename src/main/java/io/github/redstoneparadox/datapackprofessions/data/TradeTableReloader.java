@@ -29,7 +29,7 @@ public final class TradeTableReloader extends JsonReloader {
 					if (optional.isPresent()) {
 						DatapackProfessions.LOGGER.error("Error loading Trade Table '{}'. Trade Table will only be partially loaded. {}", id, result.error().get().message());
 					} else {
-						DatapackProfessions.LOGGER.error("Error loading Trade Table  '{}'. (Skipping). {}", id, result.error().get().message());
+						DatapackProfessions.LOGGER.error("Error loading Trade Table '{}'. (Skipping). {}", id, result.error().get().message());
 					}
 				}
 

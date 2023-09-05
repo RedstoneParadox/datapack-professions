@@ -4,7 +4,6 @@ import io.github.redstoneparadox.datapackprofessions.command.DumpTradesCommand;
 import io.github.redstoneparadox.datapackprofessions.command.argument.TradeTableArgumentType;
 import io.github.redstoneparadox.datapackprofessions.data.TradeTableReloader;
 import io.github.redstoneparadox.datapackprofessions.trades.TradeOfferFactoryType;
-import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.minecraft.command.argument.IdentifierArgumentType;
 import net.minecraft.command.argument.SingletonArgumentInfo;
 import net.minecraft.resource.ResourceType;
@@ -25,18 +24,15 @@ public class DatapackProfessions implements ModInitializer {
 	public void onInitialize(ModContainer mod) {
 		// Static initialization shenanigans
 		var foo = TradeOfferFactoryType.VanillaTypes.BUY_FOR_ONE_EMERALD_FACTORY_CODEC;
-
 		var loader = ResourceLoader.get(ResourceType.SERVER_DATA);
 
 		loader.registerReloader(new TradeTableReloader());
-
 		ServerArgumentType.register(
 			id("trade_table"),
 			TradeTableArgumentType.class,
 			SingletonArgumentInfo.contextFree(TradeTableArgumentType::tradeTable),
 			arg -> IdentifierArgumentType.identifier()
 		);
-
 		CommandRegistrationCallback.EVENT.register(((dispatcher, buildContext, environment) -> {
 			dispatcher.register(
 				CommandManager
