@@ -20,16 +20,16 @@ public class DatapackProfessionsRegistries {
 	public static void init() {
 		DynamicMetaRegistry.registerSynced(Keys.DATAPACK_POI_TYPES, DatapackProfessionsCodecs.POINT_OF_INTEREST_TYPE_CODEC);
 		RegistryEvents.DYNAMIC_REGISTRY_LOADED.register(registryManager -> {
-			var registry = registryManager.get(Keys.DATAPACK_POI_TYPES);
+			var optional = registryManager.getOptional(Keys.DATAPACK_POI_TYPES);
 
-			registry.getEntries().forEach(entry -> {
+			optional.ifPresent(registry -> registry.getEntries().forEach(entry -> {
 				var key = entry.getKey();
 				var type = entry.getValue();
 
 				type.blockStates().forEach(state -> {
 					Holder<PointOfInterestType> replaced;
 					try {
-						replaced = PointOfInterestTypesAccessor.getMap().put(state, Registries.POINT_OF_INTEREST_TYPE.getHolderOrThrow(key));
+						replaced = PointOfInterestTypesAccessor.getMap().put(state, registry.getHolderOrThrow(key));
 					} catch (IllegalAccessException e) {
 						throw new RuntimeException(e);
 					}
@@ -37,7 +37,7 @@ public class DatapackProfessionsRegistries {
 						throw Util.throwOrPause(new IllegalStateException(String.format("%s is defined in too many tags", state)));
 					}
 				});
-			});
+			}));
 		});
 	}
 
