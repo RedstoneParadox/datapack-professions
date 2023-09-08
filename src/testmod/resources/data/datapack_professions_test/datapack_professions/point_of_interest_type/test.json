@@ -1,0 +1,9 @@
+{
+  "block_states": [
+    {
+      "Name": "minecraft:diamond_block"
+    }
+  ],
+  "max_tickets": 1,
+  "search_distance": 1
+}

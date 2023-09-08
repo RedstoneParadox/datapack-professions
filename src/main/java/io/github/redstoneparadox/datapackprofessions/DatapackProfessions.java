@@ -3,6 +3,7 @@ package io.github.redstoneparadox.datapackprofessions;
 import io.github.redstoneparadox.datapackprofessions.command.DumpTradesCommand;
 import io.github.redstoneparadox.datapackprofessions.command.argument.TradeTableArgumentType;
 import io.github.redstoneparadox.datapackprofessions.data.TradeTableReloader;
+import io.github.redstoneparadox.datapackprofessions.registry.DatapackProfessionsRegistries;
 import io.github.redstoneparadox.datapackprofessions.trades.TradeOfferFactoryType;
 import net.minecraft.command.argument.IdentifierArgumentType;
 import net.minecraft.command.argument.SingletonArgumentInfo;
@@ -13,6 +14,7 @@ import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.quiltmc.qsl.command.api.CommandRegistrationCallback;
 import org.quiltmc.qsl.command.api.ServerArgumentType;
+import org.quiltmc.qsl.registry.api.event.RegistryEvents;
 import org.quiltmc.qsl.resource.loader.api.ResourceLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +51,7 @@ public class DatapackProfessions implements ModInitializer {
 					)
 			);
 		}));
+		DatapackProfessionsRegistries.init();
 	}
 
 	public static Identifier id(String path) {
