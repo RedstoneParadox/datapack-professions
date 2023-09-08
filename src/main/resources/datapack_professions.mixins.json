@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "entity.passive.VillagerEntityMixin",
+    "server.command.LocateCommandMixin",
     "village.BuyForOneEmeraldFactoryMixin",
     "village.EnchantBookFactoryMixin",
     "village.ProcessItemFactoryMixin",
