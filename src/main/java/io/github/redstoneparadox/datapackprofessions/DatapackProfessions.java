@@ -3,7 +3,6 @@ package io.github.redstoneparadox.datapackprofessions;
 import io.github.redstoneparadox.datapackprofessions.command.DumpTradesCommand;
 import io.github.redstoneparadox.datapackprofessions.command.argument.TradeTableArgumentType;
 import io.github.redstoneparadox.datapackprofessions.data.TradeTableReloader;
-import io.github.redstoneparadox.datapackprofessions.registry.DatapackProfessionsRegistries;
 import io.github.redstoneparadox.datapackprofessions.trades.TradeOfferFactoryType;
 import net.minecraft.command.argument.IdentifierArgumentType;
 import net.minecraft.command.argument.SingletonArgumentInfo;
@@ -50,7 +49,6 @@ public class DatapackProfessions implements ModInitializer {
 					)
 			);
 		}));
-		DatapackProfessionsRegistries.init();
 	}
 
 	public static Identifier id(String path) {
