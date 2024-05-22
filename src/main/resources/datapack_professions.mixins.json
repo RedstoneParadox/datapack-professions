@@ -15,7 +15,8 @@
     "village.SellPotionHoldingItemFactoryMixin",
     "village.SuspiciousStewForEmeraldFactoryMixin",
     "village.TypeAwareBuyForOneEmeraldFactoryMixin",
-    "world.poi.PointOfInterestTypesAccessor"
+    "world.poi.PointOfInterestTypesAccessor",
+    "world.poi.PointOfInterestTypesMixin"
   ],
   "client": [
   ],

@@ -2,6 +2,7 @@ package io.github.redstoneparadox.datapackprofessions;
 
 import io.github.redstoneparadox.datapackprofessions.command.DumpTradesCommand;
 import io.github.redstoneparadox.datapackprofessions.command.argument.TradeTableArgumentType;
+import io.github.redstoneparadox.datapackprofessions.config.Config;
 import io.github.redstoneparadox.datapackprofessions.data.TradeTableReloader;
 import io.github.redstoneparadox.datapackprofessions.trades.TradeOfferFactoryType;
 import net.minecraft.command.argument.IdentifierArgumentType;
@@ -20,6 +21,8 @@ import org.slf4j.LoggerFactory;
 public class DatapackProfessions implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("Datapack Professions");
 	public static final String NAMESPACE = "datapack_professions";
+	public static final Config CONFIG = Config.load();
+
 	@Override
 	public void onInitialize(ModContainer mod) {
 		// Static initialization shenanigans
