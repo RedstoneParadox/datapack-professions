@@ -20,10 +20,11 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public record Config(List<PoiConfig> pois) {
+public record Config(List<PoiConfig> pois, List<ProfessionConfig> professions) {
 	public static final Codec<Config> CODEC = RecordCodecBuilder.create(
 		instance -> instance.group(
-			Codec.list(PoiConfig.CODEC).fieldOf("pois").forGetter(config -> config.pois)
+			Codec.list(PoiConfig.CODEC).fieldOf("pois").forGetter(config -> config.pois),
+			Codec.list(ProfessionConfig.CODEC).fieldOf("professions").forGetter(config -> config.professions)
 		).apply(instance, Config::new)
 	);
 
@@ -48,7 +49,8 @@ public record Config(List<PoiConfig> pois) {
 		}
 
 		var pois = new ArrayList<PoiConfig>();
-		var config = new Config(pois);
+		var professions = new ArrayList<ProfessionConfig>();
+		var config = new Config(pois, professions);
 
 		var result = CODEC.encodeStart(JsonOps.INSTANCE, config).result();
 

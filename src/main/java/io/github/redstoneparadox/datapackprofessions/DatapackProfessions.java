@@ -3,10 +3,15 @@ package io.github.redstoneparadox.datapackprofessions;
 import io.github.redstoneparadox.datapackprofessions.command.DumpTradesCommand;
 import io.github.redstoneparadox.datapackprofessions.command.argument.TradeTableArgumentType;
 import io.github.redstoneparadox.datapackprofessions.config.Config;
+import io.github.redstoneparadox.datapackprofessions.config.ProfessionConfig;
 import io.github.redstoneparadox.datapackprofessions.data.TradeTableReloader;
+import io.github.redstoneparadox.datapackprofessions.mixin.village.VillagerProfessionAccessor;
 import io.github.redstoneparadox.datapackprofessions.trades.TradeOfferFactoryType;
 import net.minecraft.command.argument.IdentifierArgumentType;
 import net.minecraft.command.argument.SingletonArgumentInfo;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.util.Identifier;
@@ -52,6 +57,15 @@ public class DatapackProfessions implements ModInitializer {
 					)
 			);
 		}));
+
+		for (ProfessionConfig profession : CONFIG.professions()) {
+			var key = RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, profession.poi());
+			try {
+				VillagerProfessionAccessor.register(profession.id(), key, null);
+			} catch (IllegalAccessException e) {
+				throw new RuntimeException(e);
+			}
+		}
 	}
 
 	public static Identifier id(String path) {
