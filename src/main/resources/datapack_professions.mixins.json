@@ -4,6 +4,7 @@
   "package": "io.github.redstoneparadox.datapackprofessions.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "data.server.tag.PoiTagProviderMixin",
     "entity.passive.VillagerEntityMixin",
     "village.BuyForOneEmeraldFactoryMixin",
     "village.EnchantBookFactoryMixin",
